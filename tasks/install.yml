@@ -64,18 +64,26 @@
     - "{{ logscale_directory }}"
     - "{{ logscale_directory }}/data"
 
-- name: Ensure sysconfig directory exists
+- name: Ensure etc/logscale directory exists
   become: true
   ansible.builtin.file:
-    path: /etc/sysconfig
+    path: /etc/logscale
     state: directory
     mode: "0755"
 
 - name: Install logscale server configuration
   become: true
   ansible.builtin.template:
-    src: logscale.j2
-    dest: /etc/sysconfig/logscale
+    src: logscale.conf.j2
+    dest: /etc/logscale/server.conf
+    mode: "0644"
+  notify: Restart logscale
+
+- name: Install logscale server configuration
+  become: true
+  ansible.builtin.template:
+    src: kafka.properties.j2
+    dest: /etc/logscale/kafka.properties
     mode: "0644"
   notify: Restart logscale
 

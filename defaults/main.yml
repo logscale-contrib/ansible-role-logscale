@@ -9,5 +9,6 @@ logscale_log_directory: /var/log/logscale # this is actual logscale service log 
 logscale_replication_factor: 1
 
 logscale_kafka_port: 9092
-
+logscale_kafka_extra: |
+  security.protocol=plaintext
 logscale_open_file_limit: 250000
