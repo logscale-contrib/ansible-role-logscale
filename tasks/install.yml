@@ -60,7 +60,7 @@
   loop: 
     - "{{ logscale_log_directory }}/audit"
     - "{{ logscale_log_directory }}/debug"
-    - "{{ logscale_log_directory }}/error"
+    - "{{ logscale_log_directory }}/jvm"
     - "{{ logscale_directory }}"
     - "{{ logscale_directory }}/data"
 
