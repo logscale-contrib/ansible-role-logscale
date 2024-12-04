@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "**/templates/**": "ansible-jinja",
+        "**/*.yml": "ansible"
+    },
+    "cSpell.words": [
+        "logscale"
+    ],
+    "ansible.python.interpreterPath": "/opt/homebrew/bin/python3.12"
+}

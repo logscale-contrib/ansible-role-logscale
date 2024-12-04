@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "ansible-role-logscale"
+version = "0.1.0"
+description = ""
+authors = ["Ryan Faircloth <ryan@dss-i.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+ansible = "^11.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
