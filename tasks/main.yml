@@ -1,16 +1,1 @@
-- name: Ensure logscale group exists
-  become: true
-  ansible.builtin.group:
-    name: "{{ logscale_user_group }}"
-    state: present
-    system: true
-
-- name: Ensure logscale user exists
-  become: true
-  ansible.builtin.user:
-    name: "{{ logscale_user }}"
-    state: present
-    system: true
-    group: "{{ logscale_user_group }}"
-    home: "{{ logscale_home }}"
-    createhome: false
+- include_tasks: user.yml
