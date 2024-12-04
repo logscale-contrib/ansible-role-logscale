@@ -28,11 +28,12 @@
   become: true
   ansible.builtin.unarchive:
     src: "{{ logscale__download_destination }}"
+    creates: true
     copy: false
     dest: "{{ logscale_download_directory }}"
     owner: "root"
     group: "root"
-    when: download_logscale.changed
+  # when: download_logscale.changed
 
 # - name: Configure logscale symlink
 #   become: true
