@@ -1,0 +1,26 @@
+- name: Download logscale
+  community.general.maven_artifact:
+    group_id: com.humio
+    artifact_id: server-linux_x64
+    extension: tar.gz
+    repository_url: 'https://repo.humio.com'
+    dest: "{{ logscale__download_destination }}"
+
+- name: Unpack logscale
+  become: true
+  ansible.builtin.unarchive:
+    src: "{{ logscale__download_destination }}"
+    copy: false
+    dest: "{{ logscale_download_directory }}"
+    owner: "{{ logscale_user }}"
+    group: "{{ logscale_user_group }}"
+
+- name: Configure logscale symlink
+  become: true
+  ansible.builtin.file:
+    path: "{{ logscale_home }}"
+    src: "{{ logscale_download_directory }}/logscale_{{ logscale_scala_version }}-{{ logscale_version }}"
+    state: link
+    force: true
+    follow: false
+  # notify: Restart logscale
