@@ -1,3 +1,10 @@
+- name: Install lxml
+  become: true
+  ansible.builtin.package:
+    name: "python3-lxml"
+    state: present
+  when: ansible_os_family == "RedHat"
+
 - name: Download logscale
   community.general.maven_artifact:
     group_id: com.humio
