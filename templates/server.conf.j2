@@ -7,7 +7,9 @@ HUMIO_PORT=8080
 ELASTIC_PORT=9200
 
 KAFKA_SERVERS={% for v in groups["brokers"] %}{{ hostvars[v].ansible_host }}:{{ logscale_kafka_port }}{% if not loop.last %},{% endif %}{% endfor %}
+
+# Ensure there is blanke line due to the jintinja2 template engine above this one
 EXTRA_KAFKA_CONFIGS_FILE=/etc/logscale/kafka.properties
 
-EXTERNAL_URL=http://127.0.0.1:8080
-PUBLIC_URL=http://127.0.0.1
+EXTERNAL_URL=http://{{ ansible_hostname }}:8080
+PUBLIC_URL={{ logscale_public_url}}
