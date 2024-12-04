@@ -1,6 +1,6 @@
 logscale_user: logscale
 logscale_user_group: logscale
-logscale_home: /opt/logscale/data
+logscale_home: /opt/logscale/
 logscale_directory: /var/logscale
 logscale_version: 1.159.1
 logscale_checksum: 1a472c88cfdd1bff9b82c6adb495bdde7eb1530274eaed0cedf73640b7892b33

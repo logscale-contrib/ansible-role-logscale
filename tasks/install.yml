@@ -58,7 +58,6 @@
     group: "{{ logscale_user_group }}"
     mode: "0750"
   loop: 
-    - "{{ logscale_home }}"
     - "{{ logscale_log_directory }}/audit"
     - "{{ logscale_log_directory }}/debug"
     - "{{ logscale_log_directory }}/error"
