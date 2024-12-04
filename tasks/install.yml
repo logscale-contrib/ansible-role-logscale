@@ -23,7 +23,7 @@
   retries: 3
   delay: 3
   register: download_logscale
-  notify: Restart logscale
+  notify: Restart Logscale
 
 - name: Unpack logscale
   become: true
