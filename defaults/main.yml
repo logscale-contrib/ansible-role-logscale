@@ -1,7 +1,7 @@
 logscale_user: logscale
 logscale_user_group: logscale
 logscale_home: /opt/logscale
-logscale_version: 1.159.1
+logscale_version: 1.159.0
 # if logscale_checksum is defined role will use that value instead getting checksum from logscale downloads page
 logscale_checksum: 1a472c88cfdd1bff9b82c6adb495bdde7eb1530274eaed0cedf73640b7892b33
 #   sha512: B8679283 A2D8DAB8 6E7C636B 2C688FE9 D9E64AC4
