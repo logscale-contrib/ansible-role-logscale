@@ -10,7 +10,7 @@
     group_id: com.humio
     artifact_id: server-linux_x64
     extension: tar.gz
-    repository_url: 'https://repo.humio.com/maven2/'
+    repository_url: 'https://repo.humio.com/maven2/https://repo.humio.com/repository/maven-releases/'
     dest: "{{ logscale__download_destination }}"
 
 - name: Unpack logscale
