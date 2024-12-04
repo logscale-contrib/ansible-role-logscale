@@ -1,0 +1,23 @@
+#
+# {{ ansible_managed }}
+#
+[Unit]
+Description=Logscale by Crowdstrike
+After=network.target
+
+[Service]
+Type=notify
+EnvironmentFile=-/etc/sysconfig/logscale
+User={{ logscale_user}}
+Group={{ logscale_user_group }}
+WorkingDirectory={{ logscale_directory }}
+ExecStart={{ logscale_home }}/opt/logscale/bin/humio-server-start.sh
+Restart=on-abnormal
+
+
+LimitNOFILE={{ logscale_open_file_limit }}
+TimeoutSec=900
+
+[Install]
+WantedBy=multi-user.target
+Alias=logscale.service

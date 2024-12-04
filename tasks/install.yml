@@ -48,3 +48,20 @@
     force: true
     follow: false
   when: download_logscale.changed
+
+- name: Create logscale data and log directories
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ logscale_user }}"
+    group: "{{ logscale_user_group }}"
+    mode: "0750"
+  loop: 
+    - {{ logscale_home }}
+    - {{ logscale_log_directory }}/audit
+    - {{ logscale_log_directory }}/debug
+    - {{ logscale_log_directory }}/error
+    - {{ logscale_directory }}
+    - {{ logscale_directory }}/data
+
