@@ -33,6 +33,9 @@
     dest: "{{ logscale_download_directory }}"
     owner: "root"
     group: "root"
+    extra_opts:
+    - --transform
+    - s/^humio/logscale-{{ logscale_version}}/
   # when: download_logscale.changed
 
 # - name: Configure logscale symlink
