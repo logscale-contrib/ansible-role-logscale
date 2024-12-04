@@ -28,7 +28,7 @@
   become: true
   ansible.builtin.unarchive:
     src: "{{ logscale__download_destination }}"
-    creates: true
+    # creates: true
     copy: false
     dest: "{{ logscale_download_directory }}"
     owner: "root"
