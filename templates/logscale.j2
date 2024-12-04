@@ -6,6 +6,7 @@ JVM_LOG_DIR={{ logscale_log_directory }}/jvm
 HUMIO_PORT=8080
 ELASTIC_PORT=9200
 
-KAFKA_SERVERS={% for v in groups["brokers"] %}{{ hostvars[v].ansible_host }}:{{ logscale_kafka_port}}{% endfor %}
+KAFKA_SERVERS={% for v in groups["brokers"] %}{{ hostvars[v].ansible_host }}:{{ logscale_kafka_port }}{% if not loop.last %},{% endif %}{% endfor %}
+
 EXTERNAL_URL=http://127.0.0.1:8080
 PUBLIC_URL=http://127.0.0.1
