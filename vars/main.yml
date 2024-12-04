@@ -1,3 +1,3 @@
 logscale__download_url: https://repo.humio.com/repository/maven-releases/com/humio/server-linux_x64/{{ logscale_version }}/server-linux_x64-{{ logscale_version }}.tar.gz
-logscale__checksum_url: https://library.humio.com/release-notes/rn-{{ logscale_scala_version }}.html
+# logscale__checksum_url: https://library.humio.com/release-notes/rn-{{ logscale_scala_version }}.html
 logscale__download_destination: "{{ logscale_download_directory }}/logscale-{{ logscale_version }}.tar.gz"
