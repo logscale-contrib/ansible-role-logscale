@@ -1,5 +1,5 @@
 ---
-- name: Restart Logscale
+- name: Restart logscale
   become: true
   ansible.builtin.systemd:
     name: logscale

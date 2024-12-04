@@ -23,7 +23,7 @@
   retries: 3
   delay: 3
   register: download_logscale
-  notify: Restart Logscale
+  notify: Restart logscale
 
 - name: Unpack logscale
   become: true
@@ -64,3 +64,43 @@
     - "{{ logscale_directory }}"
     - "{{ logscale_directory }}/data"
 
+- name: Ensure sysconfig directory exists
+  become: true
+  ansible.builtin.file:
+    path: /etc/sysconfig
+    state: directory
+    mode: "0755"
+
+- name: Install logscale server configuration
+  become: true
+  ansible.builtin.template:
+    src: logscale.j2
+    dest: /etc/sysconfig/logscale
+    mode: "0644"
+  notify: Restart logscale
+
+- name: Install logscale service definition
+  become: true
+  ansible.builtin.template:
+    src: logscale.service.j2
+    dest: /usr/lib/systemd/system/logscale.service
+    mode: "0644"
+  notify: Restart logscale
+
+# - name: Flush handlers
+#   ansible.builtin.meta: flush_handlers
+
+# - name: Ensure logscale service is enabled and started
+#   become: true
+#   ansible.builtin.systemd:
+#     name: logscale
+#     enabled: true
+#     state: started
+#     daemon_reload: true
+#   retries: 3
+#   delay: 2
+
+# - name: Wait for logscale to start
+#   ansible.builtin.wait_for:
+#     port: 8080
+#     timeout: 30
