@@ -22,15 +22,17 @@
     checksum: "sha256:{{ logscale_checksum }}"
   retries: 3
   delay: 3
+  register: download_logscale
 
-# - name: Unpack logscale
-#   become: true
-#   ansible.builtin.unarchive:
-#     src: "{{ logscale__download_destination }}"
-#     copy: false
-#     dest: "{{ logscale_download_directory }}"
-#     owner: "{{ logscale_user }}"
-#     group: "{{ logscale_user_group }}"
+- name: Unpack logscale
+  become: true
+  ansible.builtin.unarchive:
+    src: "{{ logscale__download_destination }}"
+    copy: false
+    dest: "{{ logscale_download_directory }}"
+    owner: "root"
+    group: "root"
+    when: download_logscale.changed
 
 # - name: Configure logscale symlink
 #   become: true
