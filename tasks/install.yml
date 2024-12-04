@@ -23,6 +23,7 @@
   retries: 3
   delay: 3
   register: download_logscale
+  notify: Restart logscale
 
 - name: Unpack logscale
   become: true
@@ -36,14 +37,14 @@
     extra_opts:
     - --transform
     - s/^humio/logscale-{{ logscale_version}}/
-  # when: download_logscale.changed
+  when: download_logscale.changed
 
-# - name: Configure logscale symlink
-#   become: true
-#   ansible.builtin.file:
-#     path: "{{ logscale_home }}"
-#     src: "{{ logscale_download_directory }}/logscale_{{ logscale_scala_version }}-{{ logscale_version }}"
-#     state: link
-#     force: true
-#     follow: false
-#   # notify: Restart logscale
+- name: Configure logscale symlink
+  become: true
+  ansible.builtin.file:
+    path: "{{ logscale_home }}"
+    src: "{{ logscale_download_directory }}/logscale-{{ logscale_version }}"
+    state: link
+    force: true
+    follow: false
+  # when: download_logscale.changed
