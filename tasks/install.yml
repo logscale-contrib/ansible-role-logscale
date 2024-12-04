@@ -19,24 +19,25 @@
     dest: "{{ logscale__download_destination }}"
     mode: "0644"
     timeout: 90
+    checksum: "sha256:{{ logscale_checksum }}"
   retries: 3
   delay: 3
 
-- name: Unpack logscale
-  become: true
-  ansible.builtin.unarchive:
-    src: "{{ logscale__download_destination }}"
-    copy: false
-    dest: "{{ logscale_download_directory }}"
-    owner: "{{ logscale_user }}"
-    group: "{{ logscale_user_group }}"
+# - name: Unpack logscale
+#   become: true
+#   ansible.builtin.unarchive:
+#     src: "{{ logscale__download_destination }}"
+#     copy: false
+#     dest: "{{ logscale_download_directory }}"
+#     owner: "{{ logscale_user }}"
+#     group: "{{ logscale_user_group }}"
 
-- name: Configure logscale symlink
-  become: true
-  ansible.builtin.file:
-    path: "{{ logscale_home }}"
-    src: "{{ logscale_download_directory }}/logscale_{{ logscale_scala_version }}-{{ logscale_version }}"
-    state: link
-    force: true
-    follow: false
-  # notify: Restart logscale
+# - name: Configure logscale symlink
+#   become: true
+#   ansible.builtin.file:
+#     path: "{{ logscale_home }}"
+#     src: "{{ logscale_download_directory }}/logscale_{{ logscale_scala_version }}-{{ logscale_version }}"
+#     state: link
+#     force: true
+#     follow: false
+#   # notify: Restart logscale
