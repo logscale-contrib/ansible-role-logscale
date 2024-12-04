@@ -47,4 +47,4 @@
     state: link
     force: true
     follow: false
-  # when: download_logscale.changed
+  when: download_logscale.changed
