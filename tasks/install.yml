@@ -22,7 +22,6 @@
     checksum: "sha256:{{ logscale_checksum }}"
   retries: 3
   delay: 3
-  register: download_logscale
   notify: Restart logscale
 
 - name: Unpack logscale
@@ -37,7 +36,6 @@
     extra_opts:
     - --transform
     - s/^humio/logscale-{{ logscale_version}}/
-  when: download_logscale.changed
 
 - name: Configure logscale symlink
   become: true
@@ -47,7 +45,6 @@
     state: link
     force: true
     follow: false
-  when: download_logscale.changed
 
 - name: Create logscale data and log directories
   become: true
