@@ -9,6 +9,8 @@ logscale_checksum: 1a472c88cfdd1bff9b82c6adb495bdde7eb1530274eaed0cedf73640b7892
 logscale_download_directory: /opt
 logscale_log_directory: /var/log/logscale # this is actual logscale service log desitnation. not to be confused with logscale logs
 logscale_replication_factor: 1
+logscale_extra_config: |
+  AUTHENTICATION_METHOD=single-user
 
 logscale_kafka_port: 9092
 logscale_kafka_extra: |
