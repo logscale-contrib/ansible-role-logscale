@@ -1,3 +1,5 @@
+logscale_firewall_add_rules: false
+
 logscale_user: logscale
 logscale_user_group: logscale
 logscale_home: /opt/logscale

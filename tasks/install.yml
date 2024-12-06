@@ -92,6 +92,15 @@
     mode: "0644"
   notify: Restart logscale
 
+- name: Allow Firewall http Traffic
+  ansible.posix.firewalld:
+    port: 8080/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+  loop: "{{ ansible_play_hosts }}"
+  when: "logscale_firewall_add_rules and ansible_os_family == 'RedHat'"
+
 # - name: Flush handlers
 #   ansible.builtin.meta: flush_handlers
 
