@@ -14,6 +14,10 @@ EXTRA_KAFKA_CONFIGS_FILE=/etc/logscale/kafka.properties
 EXTERNAL_URL=http://{{ ansible_hostname }}:8080
 PUBLIC_URL={{ logscale_public_url}}
 
-{% if humio_heap_size_mb is defined %}
-HUMIO_HEAP_SIZE_MB={{ humio_heap_size_mb }}
+{% if logscale_humio_heap_size_mb is defined %}
+HUMIO_HEAP_SIZE_MB={{ logscale_humio_heap_size_mb }}
 {% endif %}
+{% if logscale_zone is defined %}
+ZONE={{ logscale_zone }}
+{% endif %}
+
