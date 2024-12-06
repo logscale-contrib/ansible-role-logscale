@@ -21,3 +21,6 @@ HUMIO_HEAP_SIZE_MB={{ logscale_humio_heap_size_mb }}
 ZONE={{ logscale_zone }}
 {% endif %}
 
+{% if logscale_extra_config is defined %}
+{{ logscale_extra_config }}
+{% endif %}
